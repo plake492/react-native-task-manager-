@@ -1,3 +1,5 @@
+import { TextInput } from 'react-native';
+
 export default function Input() {
-  return null;
+  return <TextInput />;
 }

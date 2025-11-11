@@ -1,3 +1,9 @@
+import { View, Text } from 'react-native';
+
 export default function TaskDetail() {
-  return null;
+  return (
+    <View>
+      <Text>Task Detail</Text>
+    </View>
+  );
 }

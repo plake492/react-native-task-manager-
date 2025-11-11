@@ -38,7 +38,8 @@ module.exports = [
       'prettier/prettier': 'error',
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
-      'comma-dangle': ['error', 'never']
+      'comma-dangle': ['error', 'never'],
+      'max-len': ['error', { code: 180, tabWidth: 2, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true, ignoreRegExpLiterals: true }]
     },
     settings: {
       react: {

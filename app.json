@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "react-native-task-manager",
+    "slug": "react-native-task-manager",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "scheme": "taskmanager",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.taskmanager.app"
+    },
+    "android": {
+      "package": "com.taskmanager.app"
+    }
+  }
+}

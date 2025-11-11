@@ -1,3 +1,9 @@
+import { View, Text } from 'react-native';
+
 export default function TaskCard() {
-  return null;
+  return (
+    <View>
+      <Text>TaskCard</Text>
+    </View>
+  );
 }
