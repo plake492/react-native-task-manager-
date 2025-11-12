@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
+import { colors, typography, spacing } from '@/constants/theme';
 
 export default function Settings() {
   return (
@@ -13,10 +14,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: colors.background,
+    padding: spacing.md
   },
   text: {
-    fontSize: 24,
-    fontWeight: 'bold'
+    ...typography.h1,
+    color: colors.text
   }
 });

@@ -1,12 +1,37 @@
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { Pressable } from 'react-native';
+import { colors } from '@/constants/theme';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function TabLayout() {
+  const { signOut } = useAuth();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.replace('/(auth)/login');
+  };
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#007AFF',
-        headerShown: true
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.disabled,
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: colors.headerBackground
+        },
+        headerTintColor: colors.text,
+        tabBarStyle: {
+          backgroundColor: colors.tabBarBackground,
+          borderTopColor: colors.border
+        },
+        headerRight: () => (
+          <Pressable onPress={handleSignOut} style={{ marginRight: 16, marginBottom: 1 }}>
+            <Ionicons name="log-out-outline" size={24} color={colors.text} />
+          </Pressable>
+        )
       }}
     >
       <Tabs.Screen
