@@ -5,17 +5,40 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const scale = SCREEN_WIDTH / 375;
 
 export const colors = {
-  primary: '#7F7EFF', // your palette: 7f7eff
-  secondary: '#A390E4', // a390e4
-  accent: '#C69DD2', // c69dd2
-  warm1: '#CC8B8C', // cc8b8c
-  warm2: '#C68866', // c68866
+  // Brand colors
+  primary: '#7F7EFF',
+  secondary: '#A390E4',
+  accent: '#C69DD2',
+  warm1: '#CC8B8C',
+  warm2: '#C68866',
+
+  // Dark mode backgrounds
+  background: '#121212',
+  surface: '#1E1E1E',
+  card: '#2C2C2C',
+  headerBackground: '#1E1E1E',
+  tabBarBackground: '#1E1E1E',
+  cardBackground: '#2C2C2C',
+
+  // Text colors for dark mode
+  text: '#FFFFFF',
+  textSecondary: '#B3B3B3',
+  textDisabled: '#666666',
+
+  // Base colors
   black: '#000000',
-  offWhite: '#FAFAFA',
   white: '#FFFFFF',
-  // disabled / placeholder / border variants
-  disabled: '#D3D3D3',
-  border: '#E0E0E0'
+  offWhite: '#FAFAFA',
+
+  // UI elements for dark mode
+  disabled: '#666666',
+  border: '#333333',
+  inputBackground: '#2C2C2C',
+  inputBorder: '#444444',
+
+  // Semantic colors
+  error: '#FF5252',
+  success: '#4CAF50'
 };
 
 function normalize(size: number) {

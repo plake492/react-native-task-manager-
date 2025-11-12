@@ -12,7 +12,7 @@
 ```bash
 npx create-expo-app my-rn-app --template tabs
 cd my-rn-app
-npm install zustand axios @react-native-async-storage/async-storage
+npm install axios @react-native-async-storage/async-storage
 ```
 
 ## Folder Structure
@@ -79,7 +79,6 @@ Wrapper around AsyncStorage for saving/retrieving data locally.
 ## Core Libraries
 
 - **expo-router**: File-based navigation
-- **zustand**: Lightweight state management
 - **axios**: HTTP client for API calls
 - **@react-native-async-storage/async-storage**: Local data persistence
 - **react-native-reanimated**: Smooth animations

@@ -3,7 +3,7 @@
 ## Phase 1: Setup & Foundation (30 min)
 
 - [ ] Initialize Expo project with tabs template
-- [ ] Install dependencies (zustand, axios, async-storage)
+- [ ] Install dependencies (axios, async-storage)
 - [ ] Create folder structure (components, hooks, services, types, constants, utils)
 - [ ] Set up TypeScript types for Task and User
 - [ ] Create theme constants (colors, spacing, fonts)
@@ -15,7 +15,7 @@
 - [ ] Create register screen
 - [ ] Build useAuth hook with login/logout functions
 - [ ] Set up AsyncStorage for token persistence
-- [ ] Add auth state to Zustand store
+- [ ] Add auth state to React Context
 - [ ] Implement protected route logic in root layout
 - [ ] Test: Login redirects to tasks, logout redirects to login
 
@@ -108,7 +108,7 @@ After building this, you can speak to:
 
 - **React Native basics**: View, Text, FlatList, navigation
 - **Navigation**: Expo Router, tabs, stack, dynamic routes
-- **State management**: Zustand (or mention Redux if asked)
+- **State management**: React Context for global auth state
 - **API integration**: Axios, loading states, error handling
 - **Storage**: AsyncStorage for tokens
 - **Performance**: FlatList optimization, avoid re-renders
