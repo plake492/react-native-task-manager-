@@ -1,13 +1,20 @@
 import { useEffect } from 'react';
-import { Slot, useRouter, useSegments } from 'expo-router';
-import { View, StyleSheet } from 'react-native';
+import { Stack, useRouter, useSegments } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { Pressable, Text, View } from 'react-native';
 import { useAuth } from '@/hooks/useAuth';
 import { colors } from '@/constants/theme';
+import routes from '@/constants/stackRoutes';
 
 export default function RootLayout() {
-  const { user, loading } = useAuth();
+  const { user, loading, signOut } = useAuth();
   const segments = useSegments();
   const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.replace('/(auth)/login');
+  };
 
   useEffect(() => {
     if (loading) return;
@@ -21,16 +28,48 @@ export default function RootLayout() {
     }
   }, [user, loading, segments]);
 
+  if (loading) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Slot />
-    </View>
+    <Stack
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#9198e5'
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        },
+        headerRight: () => (
+          <Pressable onPress={handleSignOut} style={{ marginRight: 0, marginBottom: 1 }}>
+            <View style={{ flexDirection: 'row', gap: 4, alignItems: 'center' }}>
+              <Text style={{ color: colors.text, fontWeight: 'bold' }}>Logout</Text>
+              <Ionicons name="log-out-outline" size={24} color={colors.text} />
+            </View>
+          </Pressable>
+        )
+      }}
+    >
+      {routes.map(({ name, options }) => (
+        <Stack.Screen name={name} options={options} />
+      ))}
+      {/* <Stack.Screen
+        name="(tabs)"
+        options={{
+          title: 'Task Details',
+          headerShown: false
+        }}
+      />
+      <Stack.Screen name="task/createTask" options={{ title: 'Create Task' }} /> */}
+
+      {/* <Stack.Screen
+        name="[id]/update"
+        options={{
+          title: 'Update Task'
+        }}
+      /> */}
+    </Stack>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background
-  }
-});
