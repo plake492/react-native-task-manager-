@@ -66,7 +66,7 @@ export default function UpdateTask() {
   return (
     <>
       <FormLayout
-        layoutWrapper={{ flex: 1, backgroundColor: colors.background }}
+        layoutWrapper={{ backgroundColor: colors.background }}
         keyboardAware={true}
         buttons={
           <>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
   title: {
     ...typography.h1,
-    color: colors.text,
+    color: colors.primary,
     marginBottom: spacing.lg
   },
   label: {

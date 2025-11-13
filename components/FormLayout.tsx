@@ -38,11 +38,11 @@ const styles = StyleSheet.create({
     flex: 1
   },
   scrollView: {
-    flex: 1
+    flex: 1,
+    paddingTop: spacing.md
   },
   scrollContent: {
-    padding: spacing.lg,
-    paddingTop: spacing.xl
+    paddingHorizontal: spacing.lg
   },
   buttonContainer: {
     flexDirection: 'row',

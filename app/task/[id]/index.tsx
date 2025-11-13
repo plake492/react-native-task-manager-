@@ -5,7 +5,6 @@ import { useTasks } from '@/hooks/useTasks';
 import { useAuth } from '@/hooks/useAuth';
 import { daysUntilDue } from '@/utils/helpers';
 import FormLayout from '@/components/FormLayout';
-import BackButton from '@/components/BackButton';
 
 export default function TaskDetail() {
   const router = useRouter();
@@ -17,7 +16,7 @@ export default function TaskDetail() {
 
   if (!task) {
     return (
-      <View style={styles.container}>
+      <View>
         <Text style={styles.title}>Task not found</Text>
         <Pressable style={styles.updateButton} onPress={() => router.push('/(tabs)')}>
           <Text style={styles.buttonText}>Back to Home</Text>
@@ -49,7 +48,7 @@ export default function TaskDetail() {
   return (
     <>
       <FormLayout
-        layoutWrapper={{ flex: 1, backgroundColor: colors.background }}
+        layoutWrapper={{ backgroundColor: colors.background }}
         buttons={
           <>
             <Pressable style={styles.deleteButton} onPress={handleDelete}>
@@ -61,8 +60,7 @@ export default function TaskDetail() {
           </>
         }
       >
-        <View style={styles.container}>
-          <BackButton />
+        <View>
           <Text style={styles.title}>{task.title}</Text>
 
           <View style={styles.section}>
@@ -92,17 +90,10 @@ export default function TaskDetail() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    height: '100%',
-    marginTop: spacing.xl,
-    flex: 1
-  },
   title: {
     ...typography.h1,
-    color: colors.text
+    color: colors.primary,
+    marginBottom: spacing.lg
   },
   section: {
     marginBottom: spacing.xl
