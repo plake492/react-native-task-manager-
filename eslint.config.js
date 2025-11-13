@@ -41,7 +41,7 @@ module.exports = [
       'comma-dangle': ['error', 'never'],
       'max-len': [
         'error',
-        { code: 180, tabWidth: 2, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true, ignoreRegExpLiterals: true }
+        { code: 140, tabWidth: 2, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true, ignoreRegExpLiterals: true }
       ],
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }]

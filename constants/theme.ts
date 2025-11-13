@@ -7,10 +7,15 @@ const scale = SCREEN_WIDTH / 375;
 export const colors = {
   // Brand colors
   primary: '#7F7EFF',
+  primaryDark: '#5F5ECC',
   secondary: '#A390E4',
+  secondaryDark: '#7D6BB3',
   accent: '#C69DD2',
+  accentDark: '#9B77A8',
   warm1: '#CC8B8C',
+  warm1Dark: '#A06D6E',
   warm2: '#C68866',
+  warm2Dark: '#9D6A4F',
 
   // Dark mode backgrounds
   background: '#121212',

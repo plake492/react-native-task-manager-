@@ -6,6 +6,7 @@ import { useTasks } from '@/hooks/useTasks';
 import { router } from 'expo-router';
 import { colors, typography, spacing, borderRadius } from '@/constants/theme';
 import FormLayout from '@/components/FormLayout';
+import Gradient from '@/components/Gradient';
 
 export default function CreateTask() {
   const [title, setTitle] = useState('');
@@ -52,8 +53,8 @@ export default function CreateTask() {
 
   return (
     <>
+      <Gradient />
       <FormLayout
-        layoutWrapper={{ backgroundColor: colors.background }}
         keyboardAware={true}
         buttons={
           <>
@@ -66,11 +67,17 @@ export default function CreateTask() {
           </>
         }
       >
-        <View style={styles.container}>
+        <View>
           <Text style={styles.title}>Create New Task</Text>
 
           <Text style={styles.label}>Title *</Text>
-          <TextInput style={styles.input} placeholder="Task Title" placeholderTextColor={colors.textSecondary} value={title} onChangeText={setTitle} />
+          <TextInput
+            style={styles.input}
+            placeholder="Task Title"
+            placeholderTextColor={colors.textSecondary}
+            value={title}
+            onChangeText={setTitle}
+          />
 
           <Text style={styles.label}>Description</Text>
           <TextInput
@@ -84,17 +91,31 @@ export default function CreateTask() {
           />
 
           <Text style={styles.label}>Due Date</Text>
-          <DateTimePicker value={dueDate} mode="date" display="default" onChange={onDateChange} accentColor={colors.primary} themeVariant="dark" style={styles.datePicker} />
+          <DateTimePicker
+            value={dueDate}
+            mode="date"
+            display="default"
+            onChange={onDateChange}
+            accentColor={colors.primary}
+            themeVariant="dark"
+            style={styles.datePicker}
+          />
 
           <Text style={styles.label}>Status</Text>
           <View style={styles.statusContainer}>
             <Pressable style={[styles.statusButton, status === 'todo' && styles.statusButtonActive]} onPress={() => setStatus('todo')}>
               <Text style={[styles.statusButtonText, status === 'todo' && styles.statusButtonTextActive]}>To Do</Text>
             </Pressable>
-            <Pressable style={[styles.statusButton, status === 'in_progress' && styles.statusButtonActive]} onPress={() => setStatus('in_progress')}>
+            <Pressable
+              style={[styles.statusButton, status === 'in_progress' && styles.statusButtonActive]}
+              onPress={() => setStatus('in_progress')}
+            >
               <Text style={[styles.statusButtonText, status === 'in_progress' && styles.statusButtonTextActive]}>In Progress</Text>
             </Pressable>
-            <Pressable style={[styles.statusButton, status === 'completed' && styles.statusButtonActive]} onPress={() => setStatus('completed')}>
+            <Pressable
+              style={[styles.statusButton, status === 'completed' && styles.statusButtonActive]}
+              onPress={() => setStatus('completed')}
+            >
               <Text style={[styles.statusButtonText, status === 'completed' && styles.statusButtonTextActive]}>Completed</Text>
             </Pressable>
           </View>
@@ -107,9 +128,6 @@ export default function CreateTask() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.background
-  },
   title: {
     ...typography.h1,
     color: colors.primary,

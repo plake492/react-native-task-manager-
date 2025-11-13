@@ -55,21 +55,6 @@ export default function RootLayout() {
       {routes.map(({ name, options }) => (
         <Stack.Screen name={name} options={options} />
       ))}
-      {/* <Stack.Screen
-        name="(tabs)"
-        options={{
-          title: 'Task Details',
-          headerShown: false
-        }}
-      />
-      <Stack.Screen name="task/createTask" options={{ title: 'Create Task' }} /> */}
-
-      {/* <Stack.Screen
-        name="[id]/update"
-        options={{
-          title: 'Update Task'
-        }}
-      /> */}
     </Stack>
   );
 }

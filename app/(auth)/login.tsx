@@ -32,7 +32,14 @@ export default function Login() {
         autoCapitalize="none"
         keyboardType="email-address"
       />
-      <TextInput style={styles.input} placeholder="Password" placeholderTextColor={colors.textSecondary} value={password} onChangeText={setPassword} secureTextEntry />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        placeholderTextColor={colors.textSecondary}
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <Button title="Login" onPress={handleLogin} />
       <Button title="Need an account? Register" onPress={() => router.push('/(auth)/register')} />

@@ -1,13 +1,30 @@
-import { View, Text, StyleSheet, Pressable, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ActivityIndicator, FlatList, RefreshControl } from 'react-native';
+import { useState } from 'react';
 import { colors, typography, spacing } from '@/constants/theme';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
+import { useCallback } from 'react';
 import TaskFlat from '@/components/TaskFlat';
 import { useTasks } from '@/hooks/useTasks';
 import { useAuth } from '@/hooks/useAuth';
+import { LinearGradient } from 'expo-linear-gradient';
+import Gradient from '@/components/Gradient';
 
 export default function Home() {
   const { user, loading } = useAuth();
-  const { tasks } = useTasks(user?.id);
+  const { tasks, fetchTasks } = useTasks(user?.id);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchTasks();
+    }, [])
+  );
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await fetchTasks();
+    setRefreshing(false);
+  };
 
   if (loading || !user) {
     return (
@@ -20,15 +37,29 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.heading}>Home Screen</Text>
-        <Text style={styles.body}>Welcome to your task manager</Text>
-        <View style={{ width: '100%', paddingTop: 50, display: 'flex', gap: 10 }}>
-          {tasks.map((task) => (
-            <TaskFlat key={task.id} {...task} />
-          ))}
-        </View>
-      </View>
+      <Gradient />
+      <FlatList
+        data={tasks}
+        renderItem={({ item }) => <TaskFlat {...item} />}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContent}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={[colors.primary]}
+            tintColor={colors.primary}
+            progressBackgroundColor={colors.background}
+          />
+        }
+        ListHeaderComponent={
+          <>
+            <Text style={styles.heading}>Home Screen</Text>
+            <Text style={styles.body}>Welcome to your task manager</Text>
+          </>
+        }
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+      />
       <Pressable style={styles.button} onPress={() => router.push('/task/create-task')}>
         <Text style={styles.buttonText}>New Task{'  '}+</Text>
       </Pressable>
@@ -39,12 +70,20 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'flex-start',
-    backgroundColor: colors.background,
+    backgroundColor: colors.primaryDark,
     padding: spacing.md,
-    display: 'flex',
-    justifyContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
     height: '100%'
+  },
+  listContent: {
+    paddingBottom: spacing.lg
   },
   centered: {
     justifyContent: 'center',
@@ -57,15 +96,17 @@ const styles = StyleSheet.create({
   },
   body: {
     ...typography.body,
-    color: colors.secondary,
+    color: colors.primaryDark,
     marginBottom: spacing.lg
+  },
+  separator: {
+    height: 10
   },
   button: {
     backgroundColor: colors.warm1,
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
     marginTop: spacing.lg,
-    marginLeft: 'auto',
     borderRadius: 12,
     width: '100%'
   },
