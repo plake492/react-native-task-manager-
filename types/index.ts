@@ -20,6 +20,7 @@ export type TaskInsert = {
   description?: string;
   status?: 'todo' | 'in_progress' | 'completed';
   due_date?: string;
+  user_id: string;
 };
 
 export type TaskUpdate = {

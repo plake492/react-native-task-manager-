@@ -52,7 +52,8 @@ export const typography = {
   h3: { fontSize: normalize(24), fontWeight: 600 as const, lineHeight: normalize(30) },
   body: { fontSize: normalize(16), fontWeight: 400 as const, lineHeight: normalize(22) },
   small: { fontSize: normalize(14), fontWeight: 400 as const, lineHeight: normalize(20) },
-  button: { fontSize: normalize(18), fontWeight: 600 as const, lineHeight: normalize(22) }
+  button: { fontSize: normalize(18), fontWeight: 600 as const, lineHeight: normalize(22) },
+  label: { fontSize: normalize(14), fontWeight: 600 as const, lineHeight: normalize(18) }
 };
 
 export const spacing = {
@@ -66,5 +67,6 @@ export const spacing = {
 export const borderRadius = {
   sm: 4,
   md: 8,
-  lg: 12
+  lg: 12,
+  full: 999
 };
